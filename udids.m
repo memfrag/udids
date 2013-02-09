@@ -169,7 +169,7 @@ static const char *iOSModel(const char *deviceName, int vendorId, int productId)
     return NULL;
 }
 
-static void listUDIDs(void)
+static int listUDIDs(void)
 {
     kern_return_t result;
     
@@ -177,18 +177,20 @@ static void listUDIDs(void)
     result = IOMasterPort(MACH_PORT_NULL, &masterPort);
     if (result != KERN_SUCCESS) {
         fprintf(stderr, "ERROR: Unable to get master port.\n");
+        return 1;
     }
     
     CFMutableDictionaryRef matching = IOServiceMatching(kIOUSBDeviceClassName);
     if (matching == NULL) {
         fprintf(stderr, "ERROR: Unable to create USB match pattern.\n");
-        return;
+        return 1;
     }
     
     io_iterator_t iterator = 0;
     result = IOServiceGetMatchingServices(masterPort, matching, &iterator);
     if (result != KERN_SUCCESS) {
         fprintf(stderr,  "ERROR: Unable to find USB devices.\n");
+        return 1;
     }
     
     io_service_t device;
@@ -217,13 +219,13 @@ static void listUDIDs(void)
     
         IOObjectRelease(device);
     }
+    
+    return 0;
 }
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        listUDIDs();
+        return listUDIDs();
     }
-    
-    return 0;
 }
