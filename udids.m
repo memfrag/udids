@@ -57,9 +57,9 @@
 #define USB_PRODUCT_IPOD_TOUCH_4G 0x129E
 #define USB_PRODUCT_IPOD_TOUCH_5G 0x12AA
 
-void stringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
-                      uint8_t index,
-                      io_name_t udidBuffer)
+static void stringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
+                             uint8_t index,
+                             io_name_t udidBuffer)
 {
     io_name_t buffer;
     
@@ -88,7 +88,7 @@ void stringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
     udidBuffer[count] = '\0';
 }
 
-void getUDID(io_service_t device, io_name_t udidBuffer)
+static void getUDID(io_service_t device, io_name_t udidBuffer)
 {
     kern_return_t result;
     
