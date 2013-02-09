@@ -59,7 +59,7 @@
 
 static void getStringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
                                 uint8_t index,
-                                io_name_t udidBuffer)
+                                io_name_t stringBuffer)
 {
     io_name_t buffer;
     
@@ -80,9 +80,9 @@ static void getStringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
         
     uint32_t count = 0;
     for (uint32_t j = 2; j < request.wLenDone; j += 2) {
-        udidBuffer[count++] = buffer[j];
+        stringBuffer[count++] = buffer[j];
     }
-    udidBuffer[count] = '\0';
+    stringBuffer[count] = '\0';
 }
 
 static void getUDID(io_service_t device, io_name_t udidBuffer)
