@@ -57,9 +57,9 @@
 #define USB_PRODUCT_IPOD_TOUCH_4G 0x129E
 #define USB_PRODUCT_IPOD_TOUCH_5G 0x12AA
 
-static void stringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
-                             uint8_t index,
-                             io_name_t udidBuffer)
+static void getStringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
+                                uint8_t index,
+                                io_name_t udidBuffer)
 {
     io_name_t buffer;
     
@@ -112,7 +112,7 @@ static void getUDID(io_service_t device, io_name_t udidBuffer)
     
     UInt8 index;
     (*deviceInterface)->USBGetSerialNumberStringIndex(deviceInterface, &index);
-    stringDescriptor(deviceInterface, index, udidBuffer);
+    getStringDescriptor(deviceInterface, index, udidBuffer);
 }
 
 static int intUSBProperty(io_service_t device, CFStringRef propertyName)
