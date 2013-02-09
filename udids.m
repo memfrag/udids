@@ -64,10 +64,7 @@ static void stringDescriptor(IOUSBDeviceInterface182 **deviceInterface,
     io_name_t buffer;
     
     IOUSBDevRequest request = {
-        .bmRequestType = USBmakebmRequestType(
-                                              kUSBIn,
-                                              kUSBStandard,
-                                              kUSBDevice),
+        .bmRequestType = USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice),
         .bRequest = kUSBRqGetDescriptor,
         .wValue = (kUSBStringDesc << 8) | index,
         .wIndex = 0x409,
