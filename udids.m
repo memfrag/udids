@@ -220,6 +220,8 @@ static int listUDIDs(void)
         IOObjectRelease(device);
     }
     
+    IOObjectRelease(iterator);
+    
     return 0;
 }
 
