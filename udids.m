@@ -215,8 +215,8 @@ static void listUDIDs(void)
         
         io_name_t udid = "<unknown>";
         getUDID(device, udid);
-        printf("model=\"%s\" udid=%s\n", modelName, udid);
         
+        printf("model=\"%s\" udid=%s\n", modelName, udid);
     
         IOObjectRelease(device);
     }
