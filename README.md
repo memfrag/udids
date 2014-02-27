@@ -1,6 +1,6 @@
 # udids
 
-Mac OS X command line utility for listing UDIDs of connected iOS devices.
+Mac OS X command line utility for listing UDIDs of connected iOS devices by probing the USB interface.
 
 Licensed under the MIT license.
 
